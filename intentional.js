@@ -17,7 +17,7 @@ $(document).ready(function () {
       {
         y: '0%',
         opacity: 1,
-        duration: .5,
+        duration: 0.5,
         delay: index * 0.5, // Optional: Add a delay to stagger the animations
         ease: 'power2.out', // Optional: Use an easing function for smoother animation
       }
@@ -56,7 +56,6 @@ $('.htm').each(function (index) {
       // trigger element - viewport
       start: 'top bottom',
       end: 'bottom bottom',
-
     },
   });
 
@@ -69,6 +68,7 @@ $('.htm').each(function (index) {
 });
 
 
+//TEXT2
 window.addEventListener('DOMContentLoaded', (event) => {
   setTimeout(() => {
     $('[js-line-animation]').each(function (index) {
@@ -99,8 +99,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
           { yPercent: 100 },
           {
             yPercent: 0,
-            duration: 0.5,
-            stagger: { amount: 0.7, ease: 'power1.out' },
+            duration: .5,
+            stagger: { amount: .4, ease: 'power1.out' },
           }
         );
       }
@@ -116,5 +116,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
       });
     });
-  }, 700);
+  }, 300);
 });
