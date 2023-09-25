@@ -318,6 +318,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }, 700);
 });
 
+
+//VIDEO
+//TEXT ANIMATION
+
 document.addEventListener('DOMContentLoaded', function () {
   const playPauseButtons = document.querySelectorAll('.play-pause');
 
@@ -370,7 +374,27 @@ document.addEventListener('DOMContentLoaded', function () {
       observer.observe(video);
     }
   });
+
+  // Progress bar functionality
+  playPauseButtons.forEach(function (button) {
+    const videoId = button.getAttribute('data-video');
+    const video = document.querySelector(`video[data-video="${videoId}"]`);
+    const progressContainer = button.parentElement.querySelector(
+      '.progress-container'
+    );
+    const progressBar = progressContainer.querySelector('.progress-bar');
+
+    if (video) {
+      video.addEventListener('timeupdate', function () {
+        const progress = (video.currentTime / video.duration) * 100 + '%';
+        progressBar.style.width = progress;
+      });
+    }
+  });
 });
+
+
+
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   var videos = document.querySelectorAll('video');
