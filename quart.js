@@ -51,28 +51,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Select all elements with the "play-pause" class
   const playPauseButtons = document.querySelectorAll('.play-pause');
 
-  // Function to toggle play and pause for a specific video
   function toggleVideoPlayback(video, button) {
     if (video.paused) {
       video.play();
-      button.textContent = 'Pause';
     } else {
       video.pause();
-      button.textContent = 'Play';
     }
   }
 
-  // Event listener for play-pause buttons
   playPauseButtons.forEach(function (button) {
     button.addEventListener('click', function () {
       const videoId = this.getAttribute('data-video');
       const video = document.querySelector(`video[data-video="${videoId}"]`);
-      const progressContainer = this.parentElement.querySelector('.progress-container');
-      const progressBar = progressContainer.querySelector('.progress-bar');
-
       if (video) {
         toggleVideoPlayback(video, button);
       } else {
@@ -81,10 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Select all video elements
   const videos = document.querySelectorAll('[wp-embed="video"]');
 
-  // Function to handle video visibility
   function handleVideoVisibility(video, isVisible) {
     if (isVisible && video.paused) {
       video.play();
@@ -93,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Initialize Intersection Observer for video elements
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -107,15 +96,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   );
 
-  // Observe video elements
   videos.forEach((video) => {
     if (video.tagName === 'VIDEO') {
-      video.pause(); // Pause on initial load
+      video.pause();
       observer.observe(video);
     }
   });
 });
-
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   var videos = document.querySelectorAll('video');
