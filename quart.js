@@ -312,7 +312,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 //VIDEO
-//TEXT ANIMATION
 
 document.addEventListener('DOMContentLoaded', function () {
   const playPauseButtons = document.querySelectorAll('.play-pause');

@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             trigger: textEl,
             start: 'top bottom',
             end: 'bottom bottom',
-            toggleActions: 'none play none reset',
+            toggleActions: 'none play none none',
           },
         });
         tl.fromTo(
