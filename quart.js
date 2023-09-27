@@ -1,6 +1,3 @@
-//<script src="http://localhost:3000/quart.js"></script>
-//<script src="https://cdn.jsdelivr.net/gh/R3ll36/JSServ@main/quart.js"></script>
-
 $('.nav_wrap').each(function () {
   let hamburgerEl = $(this).find('.nav_hamburger_wrap');
   let navLineEl = $(this).find('.nav_hamburger_line');
