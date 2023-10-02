@@ -67,7 +67,6 @@ $('.htm').each(function (index) {
   });
 });
 
-
 //TEXT2
 window.addEventListener('DOMContentLoaded', (event) => {
   setTimeout(() => {

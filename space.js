@@ -36,6 +36,7 @@ function playLottieAnimation() {
 // Call the function to start the animation
 playLottieAnimation();
 
+// Slider
 function slider1() {
   let splides = $('.slider1');
 
@@ -119,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 //LENIS SCROLL
-
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -260,7 +260,6 @@ $(document).ready(function () {
 });
 
 //TEXT ANIMATION
-
 window.addEventListener('DOMContentLoaded', (event) => {
   setTimeout(() => {
     $('[js-line-animation]').each(function (index) {
@@ -312,13 +311,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 //VIDEO
-
 document.addEventListener('DOMContentLoaded', function () {
   const playPauseButtons = document.querySelectorAll('.play-pause');
+  let currentPlayingVideo = null;
 
   function toggleVideoPlayback(video, button) {
     if (video.paused) {
+      if (currentPlayingVideo && currentPlayingVideo !== video) {
+        currentPlayingVideo.pause(); // Pause the currently playing video if one exists
+      }
       video.play();
+      currentPlayingVideo = video; // Set the currentPlayingVideo to the clicked video
     } else {
       video.pause();
     }
@@ -336,6 +339,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+
+  //NO SOUND VIDEO AUTOPLAY
   const videos = document.querySelectorAll('[wp-embed="video"]');
 
   function handleVideoVisibility(video, isVisible) {
