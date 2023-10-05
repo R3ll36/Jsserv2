@@ -15,35 +15,18 @@ body {
   background-color: #f0f0f0;
 }
 
-/* Define CSS styles for the triangle and circles */
-.tr_wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30vw;
-  height: 30vw;
-  position: relative;
-  overflow: none;
+.profile_card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
 }
 
-#line1, #line2, #line3 {
-  pointer-events: none;
-  visibility: hidden;
+.profile_description {
+  max-height: 50px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
 }
 
-#line1.is--active, #line2.is--active, #line3.is--active{
-  visibility: visible;
-}
-
-.circle {
- cursor: pointer;
-}
-
-#dot1, #dot2, #dot3 {
-pointer-events: none;
-visibility: hidden;
-}
-
-#dot1.is--active, #dot2.is--active, #dot3.is--active {
-  visibility: visible;
+.show-description .profile_description {
+  max-height: none;
 }
