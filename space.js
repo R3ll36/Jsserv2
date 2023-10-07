@@ -310,6 +310,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }, 700);
 });
 
+
 //VIDEO
 document.addEventListener('DOMContentLoaded', function () {
   const playPauseButtons = document.querySelectorAll('.play-pause');
@@ -339,8 +340,33 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Progress bar functionality
+  playPauseButtons.forEach(function (button) {
+    const videoId = button.getAttribute('data-video');
+    const video = document.querySelector(`video[data-video="${videoId}"]`);
+    const progressContainer = button.parentElement.querySelector(
+      '.progress-container'
+    );
+    const progressBar = progressContainer.querySelector('.progress-bar');
 
-  //NO SOUND VIDEO AUTOPLAY
+    if (video) {
+      video.addEventListener('timeupdate', function () {
+        const progress = (video.currentTime / video.duration) * 100 + '%';
+        progressBar.style.width = progress;
+      });
+
+      // Add a click event listener to the progress bar
+      progressContainer.addEventListener('click', function (event) {
+        const progressBarWidth = progressContainer.clientWidth;
+        const clickX =
+          event.clientX - progressContainer.getBoundingClientRect().left;
+        const newTime = (clickX / progressBarWidth) * video.duration;
+        video.currentTime = newTime;
+      });
+    }
+  });
+
+  // NO SOUND VIDEO AUTOPLAY
   const videos = document.querySelectorAll('[wp-embed="video"]');
 
   function handleVideoVisibility(video, isVisible) {
@@ -370,21 +396,5 @@ document.addEventListener('DOMContentLoaded', function () {
       observer.observe(video);
     }
   });
-
-  // Progress bar functionality
-  playPauseButtons.forEach(function (button) {
-    const videoId = button.getAttribute('data-video');
-    const video = document.querySelector(`video[data-video="${videoId}"]`);
-    const progressContainer = button.parentElement.querySelector(
-      '.progress-container'
-    );
-    const progressBar = progressContainer.querySelector('.progress-bar');
-
-    if (video) {
-      video.addEventListener('timeupdate', function () {
-        const progress = (video.currentTime / video.duration) * 100 + '%';
-        progressBar.style.width = progress;
-      });
-    }
-  });
 });
+
