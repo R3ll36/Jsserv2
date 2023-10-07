@@ -1,3 +1,6 @@
+//<script src="http://localhost:3000/intentional.js"></script>
+//<script src="https://cdn.jsdelivr.net/gh/R3ll36/JSServ@main/intentional.js"></script>
+
 gsap.registerPlugin(ScrollTrigger);
 
 ScrollTrigger.defaults({
@@ -98,8 +101,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
           { yPercent: 100 },
           {
             yPercent: 0,
-            duration: .5,
-            stagger: { amount: .4, ease: 'power1.out' },
+            duration: 0.5,
+            stagger: { amount: 0.4, ease: 'power1.out' },
           }
         );
       }
@@ -117,6 +120,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }, 300);
 });
-
-
-

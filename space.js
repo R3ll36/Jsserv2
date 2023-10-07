@@ -1,5 +1,5 @@
-//<script src="http://localhost:3000/quart.js"></script>
-//<script src="https://cdn.jsdelivr.net/gh/R3ll36/JSServ@main/quart.js"></script>
+//<script src="http://localhost:3000/space.js"></script>
+//<script src="https://cdn.jsdelivr.net/gh/R3ll36/JSServ@main/space.js"></script>
 
 // Function to load and play the Lottie animation
 function playLottieAnimation() {
@@ -397,4 +397,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
