@@ -310,7 +310,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }, 700);
 });
 
-
 //VIDEO
 document.addEventListener('DOMContentLoaded', function () {
   const playPauseButtons = document.querySelectorAll('.play-pause');
