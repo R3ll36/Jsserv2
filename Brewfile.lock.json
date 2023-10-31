@@ -1,0 +1,38 @@
+{
+  "entries": {
+    "tap": {
+      "homebrew/bundle": {
+        "revision": "73fe1415f01bc26ce4df0c4f52099ab1a0ef5b9d"
+      }
+    },
+    "vscode": {
+      "alefragnani.project-manager": null,
+      "christian-kohler.path-intellisense": null,
+      "dbaeumer.vscode-eslint": null,
+      "dsznajder.es7-react-js-snippets": null,
+      "esbenp.prettier-vscode": null,
+      "figma.figma-vscode-extension": null,
+      "formulahendry.auto-rename-tag": null,
+      "GitHub.github-vscode-theme": null,
+      "Hridoy.gsap-snippets": null,
+      "leighlondon.eml": null,
+      "oderwat.indent-rainbow": null,
+      "ritwickdey.LiveServer": null,
+      "steoates.autoimport": null,
+      "vscode-icons-team.vscode-icons": null,
+      "zhang-renyang.chat-gpt": null
+    }
+  },
+  "system": {
+    "macos": {
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.1.18",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "14.3.0.22.14.1",
+        "Xcode": "14.3",
+        "macOS": "14.0"
+      }
+    }
+  }
+}
