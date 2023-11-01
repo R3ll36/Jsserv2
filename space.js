@@ -36,7 +36,7 @@ function playLottieAnimation() {
 // Call the function to start the animation
 playLottieAnimation();
 
-// Slider
+// Splide Slider
 function slider1() {
   let splides = $('.slider1');
 
@@ -120,12 +120,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 //LENIS SCROLL
-// Lenis for the normal-scroll section
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  direction: 'vertical',
-  gestureDirection: 'vertical',
+  direction: 'vertical', // vertical, horizontal
+  gestureDirection: 'vertical', // vertical, horizontal, both
   smooth: true,
   mouseMultiplier: 1,
   smoothTouch: false,
@@ -133,35 +132,33 @@ const lenis = new Lenis({
   infinite: false,
 });
 
-// Lenis for the slow-scroll section (half the speed)
-const lenisSlow = new Lenis({
-  duration: 2.4, // Adjusted duration for slower scrolling (twice as slow)
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Modify the easing function if needed
-  direction: 'vertical',
-  gestureDirection: 'vertical',
-  smooth: true,
-  mouseMultiplier: 0.5, // Reduce the mouse multiplier for slower scrolling
-  smoothTouch: false,
-  touchMultiplier: 1, // Reduce the touch multiplier for slower scrolling
-  infinite: false,
-  // Add any other options specific to the slower-scroll section
+// Event listeners to control Lenis behavior
+
+$('[data-lenis-start]').on('click', function () {
+  lenis.start();
+});
+
+$('[data-lenis-stop]').on('click', function () {
+  lenis.stop();
+});
+
+$('[data-lenis-toggle]').on('click', function () {
+  $(this).toggleClass('stop-scroll');
+  if ($(this).hasClass('stop-scroll')) {
+    lenis.stop();
+  } else {
+    lenis.start();
+  }
 });
 
 // The raf function for smooth scrolling
 function raf(time) {
-  // Check if the section has the [slow-scroll] attribute
-  const isSlowScroll = $('[data-lenis]').is('[slow-scroll]');
-
-  if (isSlowScroll) {
-    lenisSlow.raf(time); // Use the slower-scroll instance
-  } else {
-    lenis.raf(time); // Use the default instance
-  }
-
+  lenis.raf(time);
   requestAnimationFrame(raf);
 }
 
 requestAnimationFrame(raf);
+
 
 
 // SWIPER SLIDER
@@ -262,57 +259,6 @@ $(document).ready(function () {
       },
     },
   });
-});
-
-//TEXT ANIMATION
-window.addEventListener('DOMContentLoaded', (event) => {
-  setTimeout(() => {
-    $('[js-line-animation]').each(function (index) {
-      gsap.set($(this), { autoAlpha: 1 });
-      let textEl = $(this);
-      let textContent = $(this).text();
-      let tl;
-
-      function splitText() {
-        new SplitType(textEl, { types: 'lines', tagName: 'span' });
-        textEl.find('.line').each(function (index) {
-          let lineContent = $(this).html();
-          $(this).html('');
-          $(this).append(
-            `<span class="line-inner" style="display: block;">${lineContent}</span>`
-          );
-        });
-        tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: textEl,
-            start: 'top bottom',
-            end: 'bottom bottom',
-            toggleActions: 'none play none reset',
-          },
-        });
-        tl.fromTo(
-          textEl.find('.line-inner'),
-          { yPercent: 100 },
-          {
-            yPercent: 0,
-            duration: 0.5,
-            stagger: { amount: 0.7, ease: 'power1.out' },
-          }
-        );
-      }
-      splitText();
-
-      let windowWidth = window.innerWidth;
-      window.addEventListener('resize', function () {
-        if (windowWidth !== window.innerWidth) {
-          windowWidth = window.innerWidth;
-          tl.kill();
-          textEl.text(textContent);
-          splitText();
-        }
-      });
-    });
-  }, 700);
 });
 
 //VIDEO
