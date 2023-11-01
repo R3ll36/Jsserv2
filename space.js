@@ -10,7 +10,7 @@ function playLottieAnimation() {
     renderer: 'svg',
     loop: false, // Set to false to play the animation once
     autoplay: false, // Set autoplay to false initially
-    path: 'https://uploads-ssl.webflow.com/64339668e5bde96984e41146/64eef1a47046f4b5858347c0_SP-CE_LogoWebsite-v3.json', // Replace with your animation's URL
+    path: 'https://uploads-ssl.webflow.com/64339668e5bde96984e41146/65427579077e379cbd86b7ce_SP-CE_LogoWebsite-v4.json', // Replace with your animation's URL
   };
   const anim = lottie.loadAnimation(animationData);
 
