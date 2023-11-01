@@ -135,7 +135,7 @@ const lenis = new Lenis({
 
 // Lenis for the slow-scroll section
 const lenisSlow = new Lenis({
-  duration: 2, // Adjust the duration for slower scrolling
+  duration: 5, // Adjust the duration for slower scrolling
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Modify the easing function if needed
   direction: 'vertical',
   gestureDirection: 'vertical',
