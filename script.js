@@ -1,25 +1,30 @@
-gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.defaults({
-  markers: false,
-});
+$(document).ready(function() {
+  $(".home-scroll_section").each(function (index) {
+    let childTriggers = $(this).find(".home-scroll_text-item");
+    let childTargets = $(this).find(".home-scroll_img-item");
 
-// Animate From
-$('.htm').each(function (index) {
-  let triggerElement = $(this);
-  let targetElement = $(this);
+    function makeItemActive(index) {
+      childTriggers.removeClass("is-active");
+      childTargets.removeClass("is-active");
+      childTriggers.eq(index).addClass("is-active");
+      childTargets.eq(index).addClass("is-active");
+    }
 
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: triggerElement,
-      // trigger element - viewport
-      start: '-100px top',
-      end: 'bottom top',
-      scrub: 0.8,
-    },
-  });
-  tl.to(targetElement, {
-    y: '110%',
-    duration: 1,
+    makeItemActive(0);
+
+    // create triggers
+    childTriggers.each(function (index) {
+      ScrollTrigger.create({
+        trigger: $(this),
+        start: "top center",
+        end: "bottom center",
+        onToggle: (isActive) => {
+          if (isActive) {
+            makeItemActive(index);
+          }
+        }
+      });
+    });
   });
 });

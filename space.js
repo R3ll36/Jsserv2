@@ -120,11 +120,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 //LENIS SCROLL
+// Lenis for the normal-scroll section
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  direction: 'vertical', // vertical, horizontal
-  gestureDirection: 'vertical', // vertical, horizontal, both
+  direction: 'vertical',
+  gestureDirection: 'vertical',
   smooth: true,
   mouseMultiplier: 1,
   smoothTouch: false,
@@ -132,32 +133,36 @@ const lenis = new Lenis({
   infinite: false,
 });
 
-// Event listeners to control Lenis behavior
-
-$('[data-lenis-start]').on('click', function () {
-  lenis.start();
-});
-
-$('[data-lenis-stop]').on('click', function () {
-  lenis.stop();
-});
-
-$('[data-lenis-toggle]').on('click', function () {
-  $(this).toggleClass('stop-scroll');
-  if ($(this).hasClass('stop-scroll')) {
-    lenis.stop();
-  } else {
-    lenis.start();
-  }
+// Lenis for the slow-scroll section
+const lenisSlow = new Lenis({
+  duration: 2, // Adjust the duration for slower scrolling
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Modify the easing function if needed
+  direction: 'vertical',
+  gestureDirection: 'vertical',
+  smooth: true,
+  mouseMultiplier: 0.5, // Reduce the mouse multiplier for slower scrolling
+  smoothTouch: false,
+  touchMultiplier: 1, // Reduce the touch multiplier for slower scrolling
+  infinite: false,
+  // Add any other options specific to the slower-scroll section
 });
 
 // The raf function for smooth scrolling
 function raf(time) {
-  lenis.raf(time);
+  // Check if the section has the [slow-scroll] attribute
+  const isSlowScroll = $('[data-lenis]').is('[slow-scroll]');
+
+  if (isSlowScroll) {
+    lenisSlow.raf(time); // Use the slower-scroll instance
+  } else {
+    lenis.raf(time); // Use the default instance
+  }
+
   requestAnimationFrame(raf);
 }
 
 requestAnimationFrame(raf);
+
 
 // SWIPER SLIDER
 
